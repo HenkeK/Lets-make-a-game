@@ -1,0 +1,18 @@
+Sprites:
+100px = 1 unit
+
+Code Format:
+1 tab not 4 spaces
+UpperCamelCase for functions
+camelCase for everything else
+No spaces in front of parentheses(es)
+
+public void Function(int ingemar)
+{
+	float floaterIfYouKnowWhatIMean = (float)i;
+	
+	if(i > 0)
+	{
+		i / 0;
+	}
+}
