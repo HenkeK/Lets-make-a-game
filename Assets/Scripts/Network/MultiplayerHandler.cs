@@ -1,25 +1,42 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 
-public class MultiplayerHandler : MonoBehaviour
+public class MultiplayerHandler : NetworkManager
 {
-	private const string typeName = "BoxFighter";
-	private const string gameName = "Testing";
-	public int port = 25565;
-
-	void Start()
+	public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
 	{
-		StartServer();
+		Debug.Log("!ServAddPl");
+
+		base.OnServerAddPlayer(conn, playerControllerId);
+
+		//GameObject player = (GameObject)Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+
+		//if (numPlayers == 2)
+		//{
+		//	player.GetComponent<SpriteRenderer>().color = HexToColor("546EFFFF");
+		//}
+
+		//NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
 	}
 
-	void Update()
+	public override void OnServerConnect(NetworkConnection conn)
 	{
-
+		Debug.Log("!ServerConn : " + conn.connectionId);
+		base.OnServerConnect(conn);
 	}
 
-	private void StartServer()
+	public override void OnClientConnect(NetworkConnection conn)
 	{
-		Network.InitializeServer(2, port, !Network.HavePublicAddress());
-		MasterServer.RegisterHost(typeName, gameName);
+		Debug.Log("!ClientConn : " + conn.connectionId);
+		base.OnClientConnect(conn);
+	}
+
+	Color HexToColor(string hex)
+	{
+		byte r = byte.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+		byte g = byte.Parse(hex.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+		byte b = byte.Parse(hex.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+		return new Color32(r, g, b, 255);
 	}
 }

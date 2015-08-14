@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
 	Rigidbody2D rb;
 	bool grounded = true;
@@ -17,6 +18,10 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
 	{
+		// If this GameObject isn't the local player
+		if (!isLocalPlayer)
+			return;
+
 		if (grounded && Input.GetKeyDown(KeyCode.Space))
 		{
 			rb.AddForce(Vector2.up * jumpForce);
@@ -28,14 +33,13 @@ public class PlayerController : MonoBehaviour
 
 		if (Input.GetKey(KeyCode.D))
 			rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+
 	}
 
 	void FixedUpdate()
 	{
 		if (feet != null)
-		{
 			if (Physics2D.Raycast(feet.position, -Vector2.up, 2f, whatIsGround).collider != null)
 				grounded = true;
-		}
 	}
 }
