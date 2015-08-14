@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerController : MonoBehaviour
 {
 	Rigidbody2D rb;
-	bool grounded = false;
+	bool grounded = true;
 	public float jumpForce = 30f;
 	public Transform feet;
 	public LayerMask whatIsGround;
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 		if (grounded && Input.GetKeyDown(KeyCode.Space))
 		{
 			rb.AddForce(Vector2.up * jumpForce);
-			grounded = false;
+			//grounded = false;
 		}
 
 		if (Input.GetKey(KeyCode.A))
@@ -32,7 +32,10 @@ public class PlayerController : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		if (Physics2D.Raycast(feet.position, -Vector2.up, 2f, whatIsGround).collider != null)
-			grounded = true;
+		if (feet != null)
+		{
+			if (Physics2D.Raycast(feet.position, -Vector2.up, 2f, whatIsGround).collider != null)
+				grounded = true;
+		}
 	}
 }
