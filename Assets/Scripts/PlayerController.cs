@@ -7,13 +7,14 @@ public class PlayerController : NetworkBehaviour
 	Rigidbody2D rb;
 	bool grounded = true;
 	public float jumpForce = 30f;
-	public Transform feet;
 	public LayerMask whatIsGround;
 	public float moveSpeed = 10f;
+	Transform trans;
 
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
+		trans = GetComponent<Transform> ();
 	}
 
 	void Update()
@@ -21,11 +22,10 @@ public class PlayerController : NetworkBehaviour
 		// If this GameObject isn't the local player
 		if (!isLocalPlayer)
 			return;
-
+		//Jump
 		if (grounded && Input.GetKeyDown(KeyCode.Space))
 		{
 			rb.AddForce(Vector2.up * jumpForce);
-			//grounded = false;
 		}
 
 		if (Input.GetKey(KeyCode.A))
@@ -41,8 +41,10 @@ public class PlayerController : NetworkBehaviour
 
 	void FixedUpdate()
 	{
-		if (feet != null)
-			if (Physics2D.Raycast(feet.position, -Vector2.up, 2f, whatIsGround).collider != null)
-				grounded = true;
+		if (Physics2D.Raycast(trans.position, Vector2.down, 0.56f * trans.localScale.y, whatIsGround).collider != null)
+			grounded = true;
+		else
+			grounded = false;
+
 	}
 }
