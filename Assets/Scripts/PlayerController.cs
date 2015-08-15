@@ -34,6 +34,9 @@ public class PlayerController : NetworkBehaviour
 		if (Input.GetKey(KeyCode.D))
 			rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
 
+		if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D) && grounded && rb.velocity.x != 0)
+			// If no movement key is pressed, interpolate the velocity towards 0 until it reaches stops
+			rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0f, 0.2f), rb.velocity.y);
 	}
 
 	void FixedUpdate()
