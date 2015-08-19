@@ -80,11 +80,6 @@ public class PlayerController : NetworkBehaviour
 		}
 	}
 
-	/*void OnGUI()
-	{
-		GUI.Label(new Rect(10, 200, 200, 50), string.Format("x:{0}, y:{1} \nmodX:{2} \nmodY:{3}", Input.mousePosition.x.ToString(), Input.mousePosition.y.ToString(), Camera.main.ScreenToWorldPoint(Input.mousePosition).x.ToString(), Camera.main.ScreenToWorldPoint(Input.mousePosition).y.ToString()));
-	}*/
-
 	void FixedUpdate()
 	{
 		if (Physics2D.Raycast(trans.position, Vector2.down, 0.56f * trans.localScale.y, whatIsGround).collider != null)
@@ -96,5 +91,21 @@ public class PlayerController : NetworkBehaviour
 	void toggleReadyToShoot()
 	{
 		readyToShoot = true;
+	}
+
+	public override void OnStartLocalPlayer()
+	{
+		Debug.Log("!");
+		GetComponent<SpriteRenderer>().color = HexToColor("4382FFFF");
+
+		//base.OnStartLocalPlayer();
+	}
+
+	Color HexToColor(string hex)
+	{
+		byte r = byte.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+		byte g = byte.Parse(hex.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+		byte b = byte.Parse(hex.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+		return new Color32(r, g, b, 255);
 	}
 }
