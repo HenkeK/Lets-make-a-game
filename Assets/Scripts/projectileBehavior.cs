@@ -3,6 +3,11 @@ using System.Collections;
 
 public class projectileBehavior : MonoBehaviour {
 
+	
+
+	void Start() {
+		Destroy(gameObject, 3f);
+	}
 
 	void OnCollisionEnter2D(Collision2D coll)
 	{
