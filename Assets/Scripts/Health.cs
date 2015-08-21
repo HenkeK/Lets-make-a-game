@@ -7,16 +7,20 @@ public class Health : MonoBehaviour {
 	int currentHealth = 1;
 	public TextAsset heart;
 	Texture2D heartTex = new Texture2D(10, 10);
+	Animator anim;
 
 	void Start () {
 		heartTex.LoadImage(heart.bytes);
 		currentHealth = maxHealth;
+		anim = GetComponent<Animator>();
 	}
 	
 	void Update () {
 		if (currentHealth<=0)
 		{
-			//Destroy(gameObject);
+			if (currentHealth < 0)
+				currentHealth = 0;
+			anim.SetBool("isDead", true);
 		}
 		if (Input.GetKeyDown(KeyCode.T))
 			currentHealth--;
@@ -30,6 +34,15 @@ public class Health : MonoBehaviour {
 	{
 		currentHealth--;
 		Debug.Log(currentHealth);
+	}
+	void GainHP(int hp) {
+		currentHealth += hp;
+	}
+	void GainHP() {
+		currentHealth++;
+	}
+	void RefillHealth() {
+		currentHealth = maxHealth;
 	}
 
 	void OnGUI ()
