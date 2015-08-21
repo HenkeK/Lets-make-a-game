@@ -4,40 +4,40 @@ using System.Collections;
 public class Health : MonoBehaviour {
 
 	int maxHealth = 5;
-	int currentHealth;
+	int currentHealth = 1;
 	public TextAsset heart;
 	Texture2D heartTex = new Texture2D(10, 10);
 
-	// Use this for initialization
 	void Start () {
 		heartTex.LoadImage(heart.bytes);
 		currentHealth = maxHealth;
-		Invoke("TakeDamage",3);
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		if (currentHealth<=0)
 		{
-			Destroy(gameObject);
+			//Destroy(gameObject);
 		}
+		if (Input.GetKeyDown(KeyCode.T))
+			currentHealth--;
 	}
 
 	void TakeDamage (int damage)
 	{
 		currentHealth -= damage;
 	}
-	/*void TakeDamage()
+	void TakeDamage()
 	{
 		currentHealth--;
 		Debug.Log(currentHealth);
-	}*/
+	}
 
 	void OnGUI ()
 	{
+
 		for (int i = 1; i <= currentHealth; i++)
 		{
-			GUI.DrawTexture(new Rect(280 + 35 * i, 600, 30, 30), heartTex, ScaleMode.ScaleToFit);
+			GUI.DrawTexture(new Rect(370 + 35 * i, 460, 30, 30), heartTex, ScaleMode.ScaleToFit);
 		}
 	}
 }
