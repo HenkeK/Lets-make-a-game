@@ -1,0 +1,297 @@
+fileFormatVersion: 2
+guid: f4c7ee99aa98bcd458cff61cec8802fb
+timeCreated: 1440190939
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: White square erased inside out_0
+    21300002: White square erased inside out_1
+    21300004: White square erased inside out_2
+    21300006: White square erased inside out_3
+    21300008: White square erased inside out_4
+    21300010: White square erased inside out_5
+    21300012: White square erased inside out_6
+    21300014: White square erased inside out_7
+    21300016: White square erased inside out_8
+    21300018: White square erased inside out_9
+    21300020: White square erased inside out_10
+    21300022: White square erased inside out_11
+    21300024: White square erased inside out_12
+    21300026: White square erased inside out_13
+    21300028: White square erased inside out_14
+    21300030: White square erased inside out_15
+    21300032: White square erased inside out_16
+    21300034: White square erased inside out_17
+    21300036: White square erased inside out_18
+    21300038: White square erased inside out_19
+    21300040: White square erased inside out_20
+    21300042: White square erased inside out_21
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 85
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: White square erased inside out_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White square erased inside out_1
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White square erased inside out_2
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White square erased inside out_3
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White square erased inside out_4
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White square erased inside out_5
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White square erased inside out_6
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White square erased inside out_7
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White square erased inside out_8
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White square erased inside out_9
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White square erased inside out_10
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White square erased inside out_11
+      rect:
+        serializedVersion: 2
+        x: 935
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White square erased inside out_12
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White square erased inside out_13
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White square erased inside out_14
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White square erased inside out_15
+      rect:
+        serializedVersion: 2
+        x: 1275
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White square erased inside out_16
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White square erased inside out_17
+      rect:
+        serializedVersion: 2
+        x: 1445
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White square erased inside out_18
+      rect:
+        serializedVersion: 2
+        x: 1530
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White square erased inside out_19
+      rect:
+        serializedVersion: 2
+        x: 1615
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White square erased inside out_20
+      rect:
+        serializedVersion: 2
+        x: 1700
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: White square erased inside out_21
+      rect:
+        serializedVersion: 2
+        x: 1785
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
