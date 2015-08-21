@@ -3,13 +3,13 @@ Sprites:
 
 Code Format:
 1 tab not 4 spaces
-UpperCamelCase for functions
+UpperCamelCase for functions and classes
 camelCase for everything else
 No spaces in front of parentheses(es)
 
 public void Function(int ingemar)
 {
-	float floaterIfYouKnowWhatIMean = (float)i;
+	float ooohThatsAFloater = (float)i;
 	
 	if(i > 0)
 	{
