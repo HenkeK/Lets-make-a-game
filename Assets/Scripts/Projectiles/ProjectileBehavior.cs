@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class ProjectileBehavior : MonoBehaviour
 {
 	public bool autoDestroy = false;
 	public float timeBeforeAutoDestroy = 3f;
-	public GameObject shooter;
+	[HideInInspector]
+	public string shooter;
 
 	void Start()
 	{
@@ -15,13 +15,14 @@ public class ProjectileBehavior : MonoBehaviour
 		}
 	}
 
-	void OnCollisionEnter2D(Collision2D coll)
+	public virtual void OnEnemyPlayerHit(Collider2D coll)
 	{
-		/*if (coll.gameObject.tag == "Player" || coll.gameObject.tag == "Player2")
-		{
-			coll.gameObject.SendMessage("loseHealth", 1f);
-		}*/
-
+		Debug.Log("Hit enemy! Override OnEnemyPlayerHit to stop this message");
 		Destroy(gameObject);
+	}
+
+	void OnTriggerEnter2D(Collider2D coll)
+	{
+		OnEnemyPlayerHit(coll);
 	}
 }

@@ -7,11 +7,13 @@ public class Player : NetworkBehaviour
 	Rigidbody2D rb;
 	Transform trans;
 	Vector2 shootDirection;
+	Vector2 oldMouse;
 	public GameObject projectile;
 	public GameObject ability1Projectile;
 	public LayerMask whatIsGround;
+	public GameObject scoreBoard;
 
-	public int health = 2;
+	public int points = 0;
 	public float moveSpeed = 10f;
 	public float jumpForce = 30f;
 	bool grounded = true;
@@ -72,6 +74,11 @@ public class Player : NetworkBehaviour
 		{
 			CmdShoot(ability1Projectile, GetShotAngle());
 		}
+
+		// Debug shoot origin
+		Vector2 playerPosTemp = new Vector2(trans.position.x, trans.position.y);
+		Debug.DrawLine(oldMouse, GetShotAngle() + playerPosTemp, Color.black, 0.005f);
+		oldMouse = GetShotAngle() + playerPosTemp;
 	}
 
 	void FixedUpdate()
@@ -85,8 +92,8 @@ public class Player : NetworkBehaviour
 	[Command]
 	void CmdShoot(GameObject bullet, Vector2 angle)
 	{
-		//Debug.Log(angle.ToString());
-		GameObject go = Instantiate(projectile, trans.position, Quaternion.identity) as GameObject;
+		Vector3 offset = new Vector3(angle.x, angle.y);
+		GameObject go = Instantiate(projectile, trans.position + offset, Quaternion.identity) as GameObject;
 		NetworkServer.Spawn(go);
 
 		// Doesn't work on connected clients for whatever reason, even though it is exactly like in the reference
@@ -94,13 +101,42 @@ public class Player : NetworkBehaviour
 		//go.GetComponent<Rigidbody2D>().velocity = angle * shootForce;
 
 		// Temporary(?) workaround
-		RpcAddForceToProjectile(go, angle * shootForce);
+		RpcAddForceToProjectile(go, angle * shootForce, gameObject.name);
 	}
 
 	[ClientRpc]
-	void RpcAddForceToProjectile(GameObject projectile, Vector2 force)
+	void RpcAddForceToProjectile(GameObject projectile, Vector2 force, string shooter)
 	{
 		projectile.GetComponent<Rigidbody2D>().velocity = force;
+
+		try
+		{
+			projectile.GetComponent<ProjectileBehavior>().shooter = gameObject.name;
+		}
+		catch (System.Exception)
+		{
+			projectile.GetComponent<Ability1Behavior>().shooter = gameObject.name;
+		}
+	}
+
+	[ClientRpc]
+	public void RpcTakeDamage(int damage)
+	{
+		if (points < 4)
+		{
+			points += damage;
+
+			for (int i = 1; i <= points; i++)
+			{
+				scoreBoard.transform.Find("Score_Keeper" + i).SendMessage("SetState", true);
+			}
+
+			Debug.Log(gameObject.name + " took " + damage + " damage! Now on " + points);
+		}
+		else
+		{
+			// Is kill :(
+		}
 	}
 
 	Vector2 GetShotAngle()
@@ -119,6 +155,7 @@ public class Player : NetworkBehaviour
 		readyToShoot = true;
 	}
 
+	// Make local player blue
 	public override void OnStartLocalPlayer()
 	{
 		GetComponent<SpriteRenderer>().color = HexToColor("4382FFFF");
