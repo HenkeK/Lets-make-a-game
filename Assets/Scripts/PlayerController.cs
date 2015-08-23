@@ -9,6 +9,7 @@ public class PlayerController : NetworkBehaviour
 	Vector2 shootDirection;
 	public Transform projectile;
 	public Transform ability1Projectile;
+	public Transform ability2Projectile;
 	public LayerMask whatIsGround;
 
 	public float moveSpeed = 10f;
@@ -76,6 +77,17 @@ public class PlayerController : NetworkBehaviour
 			shootDirection = new Vector2(horizontalProjectileForce / (Mathf.Abs(horizontalProjectileForce) + Mathf.Abs(verticalProjectileForce)), verticalProjectileForce / (Mathf.Abs(horizontalProjectileForce) + Mathf.Abs(verticalProjectileForce)));
 
 			Transform go = Instantiate(ability1Projectile, trans.position, trans.rotation) as Transform;
+			go.gameObject.GetComponent<Rigidbody2D>().AddForce(shootDirection * shootForce);
+		}
+		//Middle mousebutton ability
+		if (Input.GetMouseButtonDown(2)) {
+			Vector3 shootTowards = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			shootTowards.z = 0;
+			verticalProjectileForce = shootTowards.y - trans.position.y;
+			horizontalProjectileForce = shootTowards.x - trans.position.x;
+			shootDirection = new Vector2(horizontalProjectileForce / (Mathf.Abs(horizontalProjectileForce) + Mathf.Abs(verticalProjectileForce)), verticalProjectileForce / (Mathf.Abs(horizontalProjectileForce) + Mathf.Abs(verticalProjectileForce)));
+
+			Transform go = Instantiate(ability2Projectile, trans.position, trans.rotation) as Transform;
 			go.gameObject.GetComponent<Rigidbody2D>().AddForce(shootDirection * shootForce);
 		}
 	}
