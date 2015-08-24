@@ -20,8 +20,10 @@ public class PlayerController : NetworkBehaviour
 	float verticalProjectileForce;
 	float horizontalProjectileForce;
 	float shootForce = 1000f;
-	/*bool ability1Ready = true;			//CD for ability1
-	float ability1CD = 4f; */
+	bool ability1Ready = true;			//CD for ability1
+	float ability1CD = 4f; 
+	bool ability2Ready = true;			//CD for ability2
+	float ability2CD = 10f;
 
 	void Start()
 	{
@@ -64,11 +66,11 @@ public class PlayerController : NetworkBehaviour
 			go.gameObject.GetComponent<Rigidbody2D>().AddForce(shootDirection * shootForce);
 
 			readyToShoot = false;
-			Invoke("toggleReadyToShoot", shotDelay);
+			Invoke("ToggleReadyToShoot", shotDelay);
 		}
 
 		//Right click ability; ability1
-		if (Input.GetMouseButtonDown(1)/*&& ability1Ready*/)
+		if (Input.GetMouseButtonDown(1) && ability1Ready)
 		{
 			Vector3 shootTowards = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			shootTowards.z = 0;
@@ -78,9 +80,13 @@ public class PlayerController : NetworkBehaviour
 
 			Transform go = Instantiate(ability1Projectile, trans.position, trans.rotation) as Transform;
 			go.gameObject.GetComponent<Rigidbody2D>().AddForce(shootDirection * shootForce);
+
+			ability1Ready = false;
+			Invoke("ToggleAbility1Ready", ability1CD);
+
 		}
 		//Middle mousebutton ability
-		if (Input.GetMouseButtonDown(2)) {
+		if (Input.GetMouseButtonDown(2) && ability2Ready) {
 			Vector3 shootTowards = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			shootTowards.z = 0;
 			verticalProjectileForce = shootTowards.y - trans.position.y;
@@ -89,6 +95,9 @@ public class PlayerController : NetworkBehaviour
 
 			Transform go = Instantiate(ability2Projectile, trans.position, trans.rotation) as Transform;
 			go.gameObject.GetComponent<Rigidbody2D>().AddForce(shootDirection * shootForce);
+
+			ability2Ready = false;
+			Invoke("ToggleAbility2Ready", ability2CD);
 		}
 	}
 
@@ -100,9 +109,17 @@ public class PlayerController : NetworkBehaviour
 			grounded = false;
 	}
 
-	void toggleReadyToShoot()
+	void ToggleReadyToShoot()
 	{
 		readyToShoot = true;
+	}
+
+	void ToggleAbility1Ready() {
+		ability1Ready = true;
+	}
+
+	void ToggleAbility2Ready() {
+		ability2Ready = true;
 	}
 
 	public override void OnStartLocalPlayer()
